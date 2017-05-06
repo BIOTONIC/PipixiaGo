@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/portaudio.h"
+#include "portaudio.h"
 
 // change 'SAMPLE_RATE', 'NUM_CHANNELS' and 'PA_SAMPLE_TYPE' according to your own microphones' parameters
 #define SAMPLE_RATE  (44100)

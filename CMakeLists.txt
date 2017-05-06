@@ -109,7 +109,10 @@ include_directories(
         /usr/include/GLFW
         ${COCOS2D_ROOT}/cocos
         ${COCOS2D_ROOT}/cocos/platform
-        ${COCOS2D_ROOT}/cocos/audio/include/
+        ${COCOS2D_ROOT}/cocos/audio/include
+        ${COCOS2D_ROOT}/external
+        ${COCOS2D_ROOT}/include
+        ${COCOS2D_ROOT}
         Classes
 )
 if (WIN32)
@@ -125,8 +128,9 @@ set(GAME_SRC
         Classes/Entity.cpp
         CLasses/StartScene.cpp
         Classes/GameScene.cpp
-        Classes/SceneManager.cpp
         Classes/ResultScene.cpp
+        Classes/MapManager.cpp
+        Classes/CubePlatform.cpp
         ${PLATFORM_SPECIFIC_SRC}
         )
 
@@ -136,9 +140,10 @@ set(GAME_HEADERS
         Classes/Entity.h
         Classes/StartScene.h
         Classes/GameScene.h
-        Classes/SceneManager.h
         Classes/ResultScene.h
         Classes/PortInclude.h
+        Classes/MapManager.h
+        Classes/CubePlatform.h
         ${PLATFORM_SPECIFIC_HEADERS}
         )
 

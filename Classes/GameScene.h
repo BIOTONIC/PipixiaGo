@@ -2,7 +2,7 @@
 #define __GAME_SCENE_H__
 
 #include <ui/UIButton.h>
-#include "SceneManager.h"
+#include "MapManager.h"
 
 USING_NS_CC;
 
@@ -30,7 +30,7 @@ private:
     bool isPause;
     bool isTerminate;
 
-    SceneManager *sceneMa;
+    MapManager *mapMa;
     Label *label;
     Sprite *sprite;
     Button *pauseBtn;

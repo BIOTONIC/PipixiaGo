@@ -40,7 +40,7 @@ bool GameScene::init()
 
     this->addChild(pauseBtn, 1);
 
-    label = Label::createWithTTF("game scene", "Resources/fonts/Marker Felt.ttf", 24);
+    label = Label::createWithTTF("Score:0", "Resources/fonts/Marker Felt.ttf", 24);
 
     // position the label on the center of the screen
     label->setPosition(Vec2(origin.x + visibleSize.width / 2,
@@ -66,13 +66,13 @@ bool GameScene::init()
         sprintf(pngName, "Resources/actor_%d.png", i + 1);
         animation->addSpriteFrameWithFile(pngName);
     }
-    animation->setDelayPerUnit(0.3f);
+    animation->setDelayPerUnit(0.2f);
     animation->setRestoreOriginalFrame(true);
     action = Animate::create(animation);
     sprite->runAction(RepeatForever::create(action));
 
-    sceneMa = (SceneManager *) SceneManager::create();
-    this->addChild(sceneMa);
+    mapMa = (MapManager *) MapManager::create();
+    this->addChild(mapMa);
 
     this->schedule(schedule_selector(GameScene::update));
 
@@ -88,7 +88,7 @@ bool GameScene::init()
 
     maxVoice = minVoice;
 
-    s = 2;
+    s = 1;
 
     maxY = origin.y + visibleSize.height - sprite->getBoundingBox().size.height / 2;
 
@@ -176,7 +176,7 @@ void GameScene::update(float delta)
 {
     // get input voice per frame and then set y position of the sprite
 
-    sceneMa->SetIsMove(false);
+    mapMa->setIsMove(false);
 
     getVoice();
 
@@ -207,15 +207,15 @@ void GameScene::update(float delta)
         sprite->setPositionY(posY + speed);
     }
 
-    if (!sceneMa->isCollision(sprite))
+    if (!mapMa->isCollision(sprite))
     {
         if (speed > (-1 * maxSpeed))
             // add speed by acceleration when going down
             speed -= a;
-        sceneMa->SetIsMove(true);
+        mapMa->setIsMove(true);
     } else
     {
-        if (speed < 0 && sceneMa->isCollision(sprite) == 1)
+        if (speed < 0 && mapMa->isCollision(sprite) == 1)
         {
             // is collide when going down
             speed = 0;
@@ -260,10 +260,10 @@ void GameScene::getVoice()
 
     if (!isPause)
     {
-        label->setString(StringUtils::format("%.4f", max));
+        label->setString(StringUtils::format("Score:%d", mapMa->getScore()));
     }
 
-    sceneMa->SetIsMove(false);
+    mapMa->setIsMove(false);
 
     if (maxVoice < max)
     {
