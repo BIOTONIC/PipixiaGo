@@ -88,7 +88,7 @@ bool GameScene::init()
 
     maxVoice = minVoice;
 
-    s = 1;
+    s = 2;
 
     maxY = origin.y + visibleSize.height - sprite->getBoundingBox().size.height / 2;
 
