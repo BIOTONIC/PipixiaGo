@@ -2,7 +2,7 @@
 A voice control game like 休むな！８分音符ちゃん♪
 
 ## Develop Tools
-Mac & Cocos2d-x & Clion & Sketchbook
+Mac & Cocos2d-x & CLion & Sketchbook
 
 ## Screenshots
 ![](https://github.com/BIOTONIC/PipixiaGo/blob/master/Screenshots/StartScene_1.png)
